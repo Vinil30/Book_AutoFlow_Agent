@@ -1,0 +1,4 @@
+playwright
+markdownify
+requests
+chromadb
