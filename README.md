@@ -1,3 +1,6 @@
+Note:
+Replace the Key with your own key or just create a .env file and put your key with name API_Key, you can use Groq API's free key.
+
 # 📘 Auto_Bookflow
 
 **Auto_Bookflow** is a modular pipeline that:
