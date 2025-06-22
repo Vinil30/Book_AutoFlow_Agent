@@ -1,4 +1,15 @@
 import requests
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # Load from .env
+API_KEY = os.getenv("API_KEY")
+
+HEADERS = {
+    "Authorization": f"Bearer {API_KEY}"
+}
+
+ENDPOINT = "https://api.groq.com/openai/v1/chat/completions"
 
 def spin_content(markdown_text):
     payload = {
@@ -7,8 +18,7 @@ def spin_content(markdown_text):
             {"role": "user", "content": f"Spin this chapter creatively: {markdown_text}"}
         ]
     }
-    headers = {"Authorization": "Bearer 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"}
-    response = requests.post("https://api.groq.com/openai/v1/chat/completions", json=payload, headers=headers)
+    response = requests.post(ENDPOINT, json=payload, headers=HEADERS)
 
     print(response.status_code)
     print(response.text)
@@ -24,8 +34,7 @@ def review_content(spun_text):
             {"role": "user", "content": f"Review and refine this version:\n{spun_text}"}
         ]
     }
-    headers = {"Authorization": "Bearer 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"}
-    response = requests.post("https://api.groq.com/openai/v1/chat/completions", json=payload, headers=headers)
+    response = requests.post(ENDPOINT, json=payload, headers=HEADERS)
 
     print(response.status_code)
     print(response.text)
